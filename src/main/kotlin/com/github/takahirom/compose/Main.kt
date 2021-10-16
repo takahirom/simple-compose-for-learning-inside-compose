@@ -1,3 +1,5 @@
+@file:Suppress("FunctionName")
+
 package com.github.takahirom.compose
 
 import androidx.compose.runtime.AbstractApplier
