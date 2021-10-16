@@ -85,5 +85,10 @@ kotlin {
         implementation kotlin('test-annotations-common')
       }
     }
+    jvmMain {
+      dependencies {
+        compileOnly "org.jetbrains.compose.compiler:compiler-hosted:1.0.0-alpha4-build344"
+      }
+    }
   }
 }
