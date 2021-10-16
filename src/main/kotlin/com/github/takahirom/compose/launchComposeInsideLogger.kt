@@ -50,13 +50,26 @@ fun Composition.launchComposeInsideLogger(composer: Recomposer, mainScope: Corou
                 println("slotTable:")
                 println(slotTableString)
                 println("groups:")
-                groups.toList().windowed(5, 5, false)
+                groups.toList().windowed(
+                    size = 5,
+                    step = 5,
+                    partialWindows = false
+                )
                     .forEachIndexed { index, group ->
                         val (key, groupInfo, parentAnchor, size, dataAnchor) = group
-                        println("index: $index, key: $key, groupInfo: $groupInfo, parentAnchor: $parentAnchor, size: $size, dataAnchor: $dataAnchor")
+                        println(
+                            "index: $index, " +
+                                    "key: $key, " +
+                                    "groupInfo: $groupInfo, " +
+                                    "parentAnchor: $parentAnchor, " +
+                                    "size: $size, " +
+                                    "dataAnchor: $dataAnchor"
+                        )
                     }
                 println("slots:")
-                println(slots.joinToString(","))
+                println(slots.mapIndexed { index, slot -> index to slot }.joinToString("\n") { (index, slot) ->
+                    "$index: $slot(${slot?.javaClass})"
+                })
             }
             yield()
         }
