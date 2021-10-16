@@ -118,6 +118,7 @@ private fun Node2(name: String = "node2") {
 
 class NodeApplier(node: Node) : AbstractApplier<Node>(node) {
     override fun onClear() {
+        println("onClear")
         current.children.clear()
     }
 
@@ -126,6 +127,7 @@ class NodeApplier(node: Node) : AbstractApplier<Node>(node) {
     }
 
     override fun insertTopDown(index: Int, instance: Node) {
+        println("insert$index")
         current.children.add(index, instance)
     }
 
@@ -134,6 +136,7 @@ class NodeApplier(node: Node) : AbstractApplier<Node>(node) {
     }
 
     override fun remove(index: Int, count: Int) {
+        println("remove$index")
         current.children.remove(index, count)
     }
 }
